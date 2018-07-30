@@ -1,0 +1,39 @@
+{
+  "default":"en",
+  "en":{
+    "appName":"CB Battery Monitor",
+    "labelGeneralSettings":"General settings",
+    "cellCount":"Number of cells (S)",
+    "batteryTyp":"Battery type",
+    "batteryCapacity":"Capacity (mAh)",
+    "voltageDisplay":"voltage display",
+    "singleCell":"single cell",
+    "totalBattery":"Battery pack",
+    "sensorSettingsBatt1":"Sensors Battery 1",
+    "sensorSettingsBatt2":"Sensors Battery 2",
+    "sensor_V":"voltage sensor",
+    "sensor_A":"current sensor",
+    "sensor_mAh":"capacitance sensor",
+    "labelAlarm":"Alarm settings",
+    "alarmValue":"Alarm at (%)",
+    "voiceFile":"Voicefile"
+  },
+  "de":{
+    "appName":"CB Akkumonitor",
+    "labelGeneralSettings":"Allgemeine Einstellungen",
+    "cellCount":"Anzahl Zellen (S)",
+    "batteryTyp":"Batterie Typ",
+    "batteryCapacity":"Kapazität (mAh)",
+    "voltageDisplay":"Spannungsanzeige",
+    "singleCell":"Einzelzelle",
+    "totalBattery":"Akku Pack",
+    "sensorSettingsBatt1":"Sensoren Batterie 1",
+    "sensorSettingsBatt2":"Sensoren Batterie 2",
+    "sensor_V":"Spannungssensor",
+    "sensor_A":"Stromsensor",
+    "sensor_mAh":"Kapazitätssensor",
+    "labelAlarm":"Alarm Einstellungen",
+    "alarmValue":"Alarm bei (%)",
+    "voiceFile":"Sprachdatei"
+  }
+}
