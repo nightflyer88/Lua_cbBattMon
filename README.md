@@ -13,5 +13,6 @@ In the settings simply select the battery type (LiPo, Li-ion, Nixx) and cell num
 
 ```
 Version history:
+V1.1    21.10.18    add LiFePo Battery type, optimize LiPo percent list
 V1.0    02.06.18    initial release
 ```

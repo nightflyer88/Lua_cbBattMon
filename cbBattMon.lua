@@ -12,13 +12,16 @@
     Requires DC/DS-14/16/24 with firmware 4.22 or up.
     ---------------------------------------------------------
 
+    V1.1    21.10.18    add LiFePo Battery type, optimize LiPo percent list
     V1.0    02.06.18    initial release
 
 --]]
 
+-- App version
+local cbBattversion="1.1"
+
 ----------------------------------------------------------------------
 -- Locals for the application
-local cbBattversion="1.0"
 local lang
 local cell1_V,cell1_A,cell1_mAh,cell1_Perc=0,0,0,-1
 local cell2_V,cell2_A,cell2_mAh,cell2_Perc=0,0,0,-1
@@ -29,8 +32,11 @@ local V_sensorBatt2,A_sensorBatt2,mAh_sensorBatt2={},{},{}
 local lastVolt1,lastVolt2=0,0
 local volt1Reset,volt2Reset=0,0
 local cellTyp,voltageDisplay
-local cellTypList={"LiPo","Li-ion","Nixx"}
 local percentList={}
+
+----------------------------------------------------------------------
+-- Battery type list
+local cellTypList={"LiPo","Li-ion","LiFePo","Nixx"}
 
 ----------------------------------------------------------------------
 -- Table for binding cell-voltage to percentage
@@ -39,27 +45,26 @@ local function readPercentList(index)
         percentList =                                                
         {
         {3.000, 0},           
-        {3.380, 5},
-        {3.580, 10},
-        {3.715, 15},
-        {3.747, 20},
-        {3.769, 25},
-        {3.791, 30},
-        {3.802, 35},
-        {3.812, 40},
-        {3.826, 45},
-        {3.839, 50},
-        {3.861, 55},
-        {3.883, 60},
-        {3.910, 65},
-        {3.936, 70},
-        {3.986, 75},
-        {3.999, 80},
+        {3.250, 5},
+        {3.500, 10},
+        {3.675, 15},
+        {3.696, 20},
+        {3.718, 25},
+        {3.737, 30},
+        {3.753, 35},
+        {3.772, 40},
+        {3.789, 45},
+        {3.807, 50},
+        {3.827, 55},
+        {3.850, 60},
+        {3.881, 65},
+        {3.916, 70},
+        {3.948, 75},
+        {3.987, 80},
         {4.042, 85},
         {4.085, 90},
-        {4.142, 95},
-        {4.170, 97},
-        {4.200, 100}            
+        {4.115, 95},
+        {4.150, 100}            
         }
     elseif index==2 then    --Li-ion
         percentList =
@@ -80,7 +85,32 @@ local function readPercentList(index)
         {3.915, 95},
         {4.050, 100}
         }
-    elseif index==3 then    --Nixx
+    elseif index==3 then    --LiFePo
+        percentList =
+        {
+        {2.80,0},
+        {3.06,5},
+        {3.14,10},
+        {3.17,15},
+        {3.19,20},
+        {3.20,25},
+        {3.21,30},
+        {3.22,35},
+        {3.23,40},
+        {3.24,45},
+        {3.25,50},
+        {3.25,55},
+        {3.26,60},
+        {3.26,65},
+        {3.27,70},
+        {3.28,75},
+        {3.28,80},
+        {3.29,85},
+        {3.29,90},
+        {3.29,95},
+        {3.30,100}
+        }
+    elseif index==4 then    --Nixx
         percentList =                                                
         {
         {0.900, 0},           

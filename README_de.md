@@ -12,6 +12,7 @@ In den Einstellungen einfach den Akkutyp (LiPo, Li-ion, Nixx) und Zellenzahl aus
 ![screen003](https://raw.githubusercontent.com/nightflyer88/Lua_CbBattMon/master/img/Screen003.bmp)
 
 ```
-Version history:
+Versionen:
+V1.1    21.10.18    LiFePo Akkutyp hinzugefügt, LiPo Prozentliste überarbeitet
 V1.0    02.06.18    initial release
 ```
