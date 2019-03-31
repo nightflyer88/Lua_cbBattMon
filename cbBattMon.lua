@@ -12,13 +12,14 @@
     Requires DC/DS-14/16/24 with firmware 4.22 or up.
     ---------------------------------------------------------
 
+    V1.1.1  31.03.19    small bug fixed in telemetry display
     V1.1    21.10.18    add LiFePo Battery type, optimize LiPo percent list
     V1.0    02.06.18    initial release
 
 --]]
 
 -- App version
-local cbBattversion="1.1"
+local cbBattversion="1.1.1"
 
 ----------------------------------------------------------------------
 -- Locals for the application
@@ -144,15 +145,17 @@ local function setLanguage()
 end
 
 ----------------------------------------------------------------------
--- Draw gauge
-local function Gauge(ox,oy,cellPerc)
-    -- Fuel bar 
+-- Draw fuel bar 
+local function fuelBar(ox,oy)
     lcd.drawRectangle (ox,53+oy,20,11)
     lcd.drawRectangle (ox,41+oy,20,11)  
     lcd.drawRectangle (ox,29+oy,20,11)  
     lcd.drawRectangle (ox,17+oy,20,11)  
     lcd.drawRectangle (ox,5+oy,20,11)
-    -- Bar chart
+end
+
+-- Draw bar chart
+local function barChart(ox,oy,cellPerc)
     if(cellPerc >= 0) then
         if cellPerc > 50 then
             lcd.setColor(0,200,0)  -- green 
@@ -171,7 +174,6 @@ local function Gauge(ox,oy,cellPerc)
         -- Fractional bar
         local y=math.ceil(54-nSolidBar*12+(1-nFracBar)*9)
         lcd.drawFilledRectangle (1+ox,y+oy,18,9*nFracBar)
-        lcd.setColor(0,0,0)  -- black 
     end
 end
 
@@ -191,7 +193,7 @@ local function dispBatt(width,height)
             lcd.drawText(50-lcd.getTextWidth(FONT_MINI,string.format("%.2fV",cell1_V*cellCnt)),38,string.format("%.2fV",cell1_V*cellCnt),FONT_MINI)
         end
     end
-    Gauge(54,0,cell1_Perc)
+    fuelBar(54,0)
     
     -- draw battery 2
     if (cell2_Perc==-1) then
@@ -206,7 +208,9 @@ local function dispBatt(width,height)
             lcd.drawText(100,38,string.format("%.2fV",cell2_V*cellCnt),FONT_MINI)
         end
     end
-    Gauge(76,0,cell2_Perc)
+    fuelBar(76,0)
+    barChart(54,0,cell1_Perc)
+    barChart(76,0,cell2_Perc)
 end
 ----------------------------------------------------------------------
 -- Store settings when changed by user
