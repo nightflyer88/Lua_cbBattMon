@@ -1,5 +1,7 @@
 # LUA CB Battery Monitor
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R69PMKTCXQBUU&source=url)
+
 In combination with a central box, this app represents the power supply in a telemetry window. It shows the two batteries with voltage, current, used capacity and battery level in percent. With autoreset function, so that the used capacity in the central box is automatically reset after recharging the batteries.
 
 In combination with an RC switch, a small standby current flows, which can not be measured by the central box. The app now checks the approximate capacity on power-up, using the battery-specific discharge curve, and corrects it down if necessary. This is an additional security after several months of standby, and specifies the display.
